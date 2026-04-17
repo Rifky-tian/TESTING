@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andra | Raven's Honour Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/Project 1 (portofolio)/foto/Gemini_Generated_Image_46bb1j46bb1j46bb.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    
+/* Container Preloader */
+/* Hilangkan kursor asli di seluruh elemen */
+* {
+  cursor: none !important;
+}
+
+/* Bola Kursor Custom */
+#custom-cursor {
+  width: 20px;
+  height: 20px;
+  background: var(--raven-glow); /* Ungu terang */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Supaya bola nggak ngehalangin klik tombol */
+  z-index: 10000; /* Biar selalu di paling atas */
+  box-shadow: 0 0 15px var(--raven-glow), 0 0 30px var(--raven-purple);
+  transition: transform 0.1s ease-out; /* Bikin pergerakan agak smooth */
+  mix-blend-mode: screen; /* Efek keren pas kena warna lain */
+}
+
+/* Efek saat mouse nge-klik sesuatu */
+.cursor-click {
+  transform: scale(0.7);
+  background: var(--raven-accent) !important; /* Berubah jadi emas pas diklik */
+}
+#preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #0a0118; /* Ungu super gelap */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Paling atas dari segalanya */
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+/* Teks Decrypting */
+.decrypt-box {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace; /* Font ala komputer */
+}
+
+#decrypt-text {
+  color: var(--raven-glow);
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px var(--raven-glow);
+}
+
+/* Progress Bar Loader */
+.loader-bar {
+  width: 250px;
+  height: 2px;
+  background: rgba(168, 85, 247, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-progress {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--raven-glow);
+  animation: load-run 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes load-run {
+  0% { left: -100%; }
+  50% { left: -30%; }
+  100% { left: 0; }
+}
+
+/* Efek Fade Out saat selesai */
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+    .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal-in 1.2s forwards;
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    
+    .video-background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      overflow: hidden; z-index: -1;
+    }
+
+    .video-background video {
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.4) contrast(1.5) saturate(0);
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(18, 3, 38, 0.7), var(--bg-dark));
+    }
+    
+    /* --- OPTIMIZED RAVEN'S HONOUR PALETTE --- */
+    :root {
+      /* Bagian yang diubah agar background jadi Ungu Gelap (tidak hitam pekat) */
+      --bg-dark: #120326;           /* Ungu tua nebula, masih gelap tapi terlihat ungunya */
+      --raven-purple: #4c1d95;      /* Ungu utama Raven */
+      --raven-glow: #a855f7;        /* Ungu menyala untuk aksen */
+      --raven-accent: #eab308;      /* Emas Honour */
+      --text-main: #f1f5f9;         /* Putih keabuan */
+      
+      /* Tambahan efek Glassmorphism yang lebih menyatu dengan background */
+      --glass-bg: rgba(76, 29, 149, 0.08);
+      --glass-border: rgba(168, 85, 247, 0.25);
+    }
+
+    /* --- RESET & BASE --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    html {scroll-behavior: smooth;
+  /* Tambahan biar scroll kerasa lebih premium */
+  scrollbar-gutter: stable;}
+
+    body {
+      background-color: var(--bg-dark);
+      /* Nebula effect yang membuat background terlihat dinamis */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(76, 29, 149, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(18, 3, 38, 0.1) 0%, transparent 100%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* --- BACKGROUND ELEMENTS --- */
+    #celestial-container { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+    .moon {
+      position: absolute; width: 120px; height: 120px;
+      background: #f1f5f9; border-radius: 50%;
+      /* Glow bulan disesuaikan dengan tema ungu */
+      box-shadow: 0 0 60px rgba(168, 85, 247, 0.45), inset -15px -15px 30px rgba(0,0,0,0.3);
+      opacity: 0; transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .star { position: absolute; background: white; border-radius: 50%; opacity: 0; }
+    .twinkle { animation: twinkle-anim 3s infinite ease-in-out; }
+    @keyframes twinkle-anim { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 0.8; transform: scale(1.2); } }
+
+    .meteor {
+      position: absolute; width: 2px; height: 80px;
+      background: linear-gradient(to bottom, var(--raven-glow), transparent);
+      transform: rotate(45deg); opacity: 0;
+    }
+    @keyframes meteor-fall { 0% { transform: translate(0,0) rotate(45deg); opacity: 1; } 100% { transform: translate(-600px, 600px) rotate(45deg); opacity: 0; } }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 4px;
+      background: linear-gradient(to right, var(--raven-purple), var(--raven-glow));
+      width: 0%; z-index: 1001; transition: width 0.1s;
+    }
+
+    #mouse-glow {
+      position: fixed; width: 600px; height: 600px;
+      /* Glow ungu yang lebih tajam mengikuti kursor */
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); transition: transform 0.1s ease-out;
+    }
+
+    /* --- HEADER --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 8%; position: fixed; top: 0; width: 100%;
+      backdrop-filter: blur(15px); background: rgba(18, 3, 38, 0.85);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3); z-index: 1000;
+    }
+    .logo { font-weight: 600; font-size: 1.5rem; color: var(--raven-glow); letter-spacing: 2px; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
+    nav a { margin-left: 25px; text-decoration: none; color: #cbd5e1; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+    nav a:hover { color: var(--raven-glow); text-shadow: 0 0 10px var(--raven-glow); }
+
+    /* --- HERO --- */
+    .hero {
+      height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; transition: 0.8s;
+    }
+    .hero.outro { opacity: 0; transform: scale(0.9); filter: blur(10px); }
+    .profile-wrapper {
+     position: relative;
+  width: 150px; /* Sesuaikan ukuran profil lu */
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--raven-purple);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  transition: all 0.5s ease;
+  cursor: crosshair;
+    }
+    .profile-glitch-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; /* Agar smile-nya pas di tengah */
+  opacity: 0; /* Mulai dari transparan */
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Di atas gambar asli */
+  filter: drop-shadow(0 0 10px var(--raven-glow)); /* Efek glow ungu */
+}
+.profile-wrapper:hover {
+  border-color: var(--raven-glow);
+  box-shadow: 0 0 30px var(--raven-glow);
+  transform: scale(1.05);
+}
+
+.profile-wrapper:hover .hero-img {
+  opacity: 0.1; /* Gambar asli memudar */
+  transform: scale(1.1);
+}
+
+.profile-wrapper:hover .profile-glitch-img {
+  opacity: 1; /* Muncul penuh */
+  animation: profile-glitch-anim 0.2s infinite; /* Animasi eror */
+}
+    .hero-img {width: 100%; height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1; }
+    .hero h2 {
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 800;
+  color: white;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero h2:hover {
+  text-shadow: 
+    2px 0 var(--raven-glow), 
+    -2px 0 var(--raven-accent);
+  animation: glitch-text 0.3s infinite;
+}
+
+@keyframes profile-glitch-anim {
+  0% { transform: translate(0); filter: hue-rotate(0deg); }
+  25% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  50% { transform: translate(2px, -2px); filter: hue-rotate(180deg); }
+  75% { transform: translate(-1px, 0px); filter: hue-rotate(270deg); }
+  100% { transform: translate(0); filter: hue-rotate(360deg); }
+}
+
+@keyframes glitch-text {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(-2px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  80% { transform: translate(2px, -1px); }
+  100% { transform: translate(0); }
+}
+    .typing-text::after { content: "|"; animation: blink 0.7s infinite; color: var(--raven-glow); }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* --- SECTIONS --- */
+    .section { padding: 120px 10%; min-height: 100vh; opacity: 0; transform: translateY(40px); transition: 1s ease-out; }
+    .section.show { opacity: 1; transform: translateY(0); }
+    .section-title { font-size: 3rem; margin-bottom: 50px; text-align: center; font-weight: 600; color: var(--text-main); }
+    .section-title::after { 
+      content: ''; display: block; width: 80px; height: 5px; 
+      background: var(--raven-glow); margin: 15px auto; border-radius: 10px; 
+      box-shadow: 0 0 15px var(--raven-glow); 
+    }
+
+    /* --- CARDS & GLASS --- */
+    .glass-card {
+      background: var(--glass-bg); backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border); border-radius: 24px;
+      padding: 40px; transition: 0.4s;
+    }
+    .glass-card:hover { border-color: var(--raven-glow); background: rgba(168, 85, 247, 0.06); transform: translateY(-5px); }
+
+    /* TIMELINE */
+    .timeline { position: relative; max-width: 800px; width: 100%; border-left: 3px solid var(--raven-purple); padding-left: 40px; margin: 0 auto; }
+    .timeline-item { position: relative; margin-bottom: 60px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -53px; top: 7px; width: 22px; height: 22px;
+      background: var(--raven-glow); border-radius: 50%; box-shadow: 0 0 20px var(--raven-glow);
+    }
+    .timeline-item h4 { color: var(--raven-glow); font-size: 1.5rem; }
+    .timeline-item span { color: var(--raven-accent); font-weight: 600; font-size: 0.95rem; letter-spacing: 1px; }
+
+    /* SKILLS */
+    .skill-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .skill-card {
+      background: rgba(76, 29, 149, 0.15); padding: 15px 35px; border-radius: 15px;
+      border: 1px solid rgba(168, 85, 247, 0.2); font-weight: 600; transition: 0.3s;
+    }
+.skill-card {
+  transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.skill-card:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: var(--raven-glow);
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+    /* VAULT */
+    .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; }
+    .vault-card {
+      height: 280px; display: flex; flex-direction: column; justify-content: flex-end;
+      background: linear-gradient(to top, rgba(76, 29, 149, 0.45), transparent);
+    }
+    .vault-card h4 { color: var(--raven-glow); margin-bottom: 10px; font-size: 1.5rem; }
+
+    /* VIDEO BUBBLE */
+    .video-bubble {
+      width: 320px; height: 180px; border-radius: 20px; overflow: hidden;
+      margin: 40px auto; cursor: pointer; border: 2px solid var(--raven-purple);
+      transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+    .video-bubble video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) contrast(1.1); transition: 0.5s; }
+    .video-bubble:hover video { filter: brightness(1.1); }
+    .video-bubble.active {
+      position: fixed; top: 115%; left: 50%; transform: translate(-50%, -50%);
+      width: 90vw; height: 80vh; z-index: 9999; border-color: var(--raven-glow);
+    }
+    .video-bubble.active video { filter: brightness(1.2) contrast(1.1); } /* Dicerahkan saat aktif sesuai permintaan sebelumnya */
+
+    /* .overlay-blur { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); z-index: 9998; } */
+
+    /* SOCIALS */
+    .social-links { display: flex; gap: 40px; margin: 40px 0; }
+    .social-icon { font-size: 2.8rem; color: #94a3b8; transition: 0.4s; text-decoration: none; }
+    /* Hover effect disesuaikan dengan glow ungu */
+    .social-icon:hover { color: var(--raven-glow); transform: translateY(-10px); filter: drop-shadow(0 0 15px var(--raven-glow)); }
+
+    .btn {
+      text-decoration: none; padding: 16px 45px; border-radius: 16px;
+      background: var(--raven-purple); color: white; font-weight: 600;
+      transition: 0.4s; border: 2px solid var(--raven-glow);
+    }
+    .btn:hover { background: var(--raven-glow); box-shadow: 0 0 30px var(--raven-glow); transform: scale(1.05); }
+
+    footer { padding: 80px 20px; text-align: center; color: #64748b; border-top: 1px solid rgba(168, 85, 247, 0.1); }
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* Tekstur titik-titik halus */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Resolution_White_Noise_Video_Frame.png');
+  opacity: 0.04; /* Sangat tipis biar elegan */
+  pointer-events: none;
+  z-index: 9999;
+}
+  </style>
+</head>
+<body>
+  <div id="custom-cursor"></div>
+  ...
+<div id="preloader">
+  <div class="decrypt-box">
+    <div id="decrypt-text">INITIALIZING SYSTEM...</div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <div id="status-code" style="color: var(--raven-purple); font-size: 0.7rem; margin-top: 10px; font-family: monospace;"></div>
+  </div>
+</div>
+<div id="progress-bar"></div>
+<div id="mouse-glow"></div>
+<div id="celestial-container"></div>
+<div class="overlay-blur" id="overlay"></div>
+
+<header>
+  <div class="logo">ANDRA</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#odyssey">Odyssey</a>
+    <a href="#vault">Vault</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" style="position: relative;">
+    
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="/Project 1 (portofolio)/foto/Triangle_Noise_TV_Static_Glitch_Background_loop.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
+   <div class="profile-wrapper">
+  <img src="/Project 1 (portofolio)/foto/lah gua.jpeg" class="hero-img" alt="Rifky Asli">
+  
+  <img src="/Project 1 (portofolio)/foto/sec.jpg" class="profile-glitch-img" alt="Raven Glitch Smile">
+</div>
+    <h2>Hi, I'm Rifky</h2>
+  <p id="type-p" style="color: var(--raven-accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;"></p>
+  <a href="https://www.instagram.com/br0andra_?igsh=MW5hOTdmZTNjeHo4dA==" target="_blank"  class="btn" style="margin-top: 40px;">ENTERING THE NEBULA</a>
+</section>
+
+<section id="about" class="section">
+  <h2 class="section-title">The Discovery</h2>
+  <div class="glass-card" style="max-width: 900px; margin: 0 auto; text-align: center;">
+    <p style="font-size: 1.1rem; color: #cbd5e1;">I’m a college student in Universitas Pasundan, learning and growing. Consistency is my main weapon. I analyze patterns—in games, in code, and in behavior—to find the winning strategy.</p>
+    <p style="margin-top: 25px; font-style: italic; color: var(--raven-accent); font-weight: 600;">“If you ever feel like giving up, remember why you started.”</p>
+    
+    <div class="video-bubble" id="videoBubble">
+      <video id="brawlVideo" src="/Project 1 (portofolio)/foto/snaptik_7577726237435514132_v3.mp4" muted loop></video>
+    </div>
+  </div>
+</section>
+
+<section id="odyssey" class="section">
+  <h2 class="section-title">The Odyssey</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span>2024</span>
+      <h4>The Awakening</h4>
+      <p>Mastering the basics of logic and starting the journey into the digital realm.</p>
+    </div>
+    <div class="timeline-item">
+      <span>2025</span>
+      <h4>Nebula Foundation</h4>
+      <p>Deepening skills in front-end development and glassmorphism design.</p>
+    </div>
+    <div class="timeline-item">
+      <span>CURRENT</span>
+      <h4>Competitive Analyst</h4>
+      <p>Strategizing movements and analyzing behaviors in the world of MOBA.</p>
+    </div>
+  </div>
+</section>
+
+<section id="arsenal" class="section">
+  <h2 class="section-title">The Arsenal</h2>
+  <div class="skill-container">
+    <div class="skill-card">HTML5 / CSS3</div>
+    <div class="skill-card">JavaScript ES6</div>
+    <div class="skill-card">Pattern Logic</div>
+    <div class="skill-card">Competitive Strategy</div>
+    <div class="skill-card">Glassmorphism UI</div>
+    <div class="skill-card">Git Workflow</div>
+  </div>
+</section>
+
+<section id="vault" class="section">
+  <h2 class="section-title">The Vault</h2>
+  <div class="vault-grid">
+    <div class="vault-card glass-card">
+      <h4>Celestial Portfolio</h4>
+      <p>Inspired by the teachings of Sandhika Galih. A modern take on nebula aesthetics.</p>
+    </div>
+    <div class="vault-card glass-card">
+      <h4>Pattern Analysis Bot</h4>
+      <p>Experimental project for predicting enemy movements in competitive gaming.</p>
+    </div>
+    <div class="vault-card glass-card">
+      <h4>Glassmorphism Kit</h4>
+      <p>A library of reusable UI components with noble gold accents.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section" style="text-align: center;">
+  <h2 class="section-title">Establish Connection</h2>
+  <p>Still Learning and Won't Stop.</p>
+  
+  <div class="social-links" style="justify-content: center;">
+    <a href="https://wa.me/083121902388" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://discord.com/channels/@me" target="_blank" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+    <a href="mailto:broandra148@gmail.com" class="social-icon"><i class="fa-regular fa-envelope"></i></a>
+  </div>
+  
+  <p style="color: #64748b; font-weight: 600; letter-spacing: 1px;">Code by Light — Execute by Night</p>
+</section>
+
+<footer>
+  <p style="letter-spacing: 2px;">
+    TRUST THE <span style="color: var(--raven-glow);">DARK</span>, 
+    LEAVE YOUR <span style="color: var(--raven-accent);">MARK</span>.
+  </p>
+  <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">© 2026 RIFKY ANDRA | RAVEN'S HONOUR EDITION</p>
+</footer>
+
+<script>
+
+const cursor = document.getElementById('custom-cursor');
+
+// 1. Gerakan Cursor
+document.addEventListener('mousemove', (e) => {
+  // e.clientX dan e.clientY itu posisi mouse lu
+  // -10 itu supaya posisi bola pas di tengah ujung mouse
+  cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+});
+
+// 2. Efek Pas Klik (Bola Mengecil & Ganti Warna)
+document.addEventListener('mousedown', () => {
+  cursor.classList.add('cursor-click');
+});
+
+document.addEventListener('mouseup', () => {
+  cursor.classList.remove('cursor-click');
+});
+
+// 3. Efek Pas Hover Tombol (Bola Membesar)
+const buttons = document.querySelectorAll('a, button, .profile-wrapper');
+buttons.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    cursor.style.width = '40px';
+    cursor.style.height = '40px';
+    cursor.style.backgroundColor = 'transparent';
+    cursor.style.border = '2px solid var(--raven-glow)';
+  });
+  
+  btn.addEventListener('mouseleave', () => {
+    cursor.style.width = '20px';
+    cursor.style.height = '20px';
+    cursor.style.backgroundColor = 'var(--raven-glow)';
+    cursor.style.border = 'none';
+  });
+});
+
+ window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  const textElement = document.getElementById('decrypt-text');
+  const statusElement = document.getElementById('status-code');
+  
+  // --- KODE SUARA JARVIS ANTI-STUCK ---
+  let jarvisVoice = null;
+
+  // Fungsi buat nyari suara cowok (David/Male)
+  const loadVoices = () => {
+    const voices = window.speechSynthesis.getVoices();
+    jarvisVoice = voices.find(v => v.name.includes('David') || v.name.includes('Male') || v.name.includes('Google US English'));
+  };
+
+  // Panggil loading suara
+  loadVoices();
+  if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  const speakJarvis = (text) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel(); 
+      const msg = new SpeechSynthesisUtterance(text);
+      if (jarvisVoice) msg.voice = jarvisVoice;
+      msg.pitch = 0.7; // Suara ngebass
+      msg.rate = 1.2;  
+      msg.lang = 'en-US';
+      window.speechSynthesis.speak(msg);
+    }
+  };
+
+  // --- LOGIKA LOADING ---
+  const messages = [
+    "CHECKING ACCESS...",
+    "DECRYPTING ASSETS...",
+    "BYPASSING FIREWALL...",
+    "ESTABLISHING NEBULA CONNECTION...",
+    "ACCESS GRANTED"
+  ];
+  
+  let i = 0;
+  const interval = setInterval(() => {
+    // Pastikan elemen ada sebelum diisi teks (mencegah error)
+    if (textElement) textElement.innerText = messages[i];
+    if (statusElement) statusElement.innerText = "HEX_" + Math.random().toString(16).toUpperCase().substring(2, 10);
+    
+    // Trigger suara pas "ACCESS GRANTED"
+    if (messages[i] === "ACCESS GRANTED") {
+      try {
+        speakJarvis("Welcome people. System is fully operational. Let Me Introduce Myself. I am Jarvis, Mr.Rifky personal security system, I am here to keep this web safe and secure, keep scrolling and enjoy the experience,");
+      } catch (e) {
+        console.log("Audio Error: ", e); // Kalau audio error, loading tetep jalan
+      }
+    }
+    
+    i++;
+    
+    if (i >= messages.length) {
+      clearInterval(interval);
+      
+      // Jeda setelah ACCESS GRANTED agar Jarvis selesai ngomong
+      setTimeout(() => {
+        if (preloader) {
+          preloader.classList.add('loader-hidden');
+          // Pastikan fungsi type lu terpanggil
+          if (typeof type === "function") {
+            setTimeout(type, 500);
+          } else {
+            console.warn("Fungsi type() tidak ditemukan!");
+          }
+        }
+      }, 1200); 
+    }
+  }, 600);
+});
+  // Mouse Glow
+  const glow = document.getElementById('mouse-glow');
+  window.addEventListener('mousemove', (e) => {
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+  });
+
+  // Celestial Setup
+  const celestial = document.getElementById('celestial-container');
+  const moon = document.createElement('div');
+  moon.className = 'moon';
+  celestial.appendChild(moon);
+
+  const stars = [];
+  for(let i=0; i<60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 1;
+    s.style.width = size + 'px'; s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    celestial.appendChild(s);
+    stars.push(s);
+  }
+
+  // Scroll & Progress
+  const sections = document.querySelectorAll(".section");
+  const hero = document.querySelector(".hero");
+  const progressBar = document.getElementById("progress-bar");
+
+  window.addEventListener("scroll", () => {
+    hero.classList.toggle("outro", window.scrollY > 200);
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + "%";
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        if(entry.target.id === 'about') triggerCelestial();
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(s => observer.observe(s));
+
+  function triggerCelestial() {
+    moon.style.opacity = '1'; moon.style.top = '10%'; moon.style.left = '80%';
+    stars.forEach((s, i) => { setTimeout(() => { s.style.opacity = '1'; s.classList.add('twinkle'); }, i * 15); });
+  }
+
+  // Typewriter
+  const typeText = "Code by light — Execute by Night";
+  const typeTarget = document.getElementById("type-p");
+  let idx = 0;
+  function type() {
+    if (idx < typeText.length) {
+      typeTarget.innerHTML += typeText.charAt(idx);
+      idx++; setTimeout(type, 80);
+    }
+  }
+  setTimeout(type, 1200);
+
+  // Video Bubble
+  const bubble = document.getElementById("videoBubble");
+  const video = document.getElementById("brawlVideo");
+  const overlay = document.getElementById("overlay");
+  
+  bubble.onclick = () => {
+    bubble.classList.toggle("active");
+    const active = bubble.classList.contains("active");
+    overlay.style.display = active ? "block" : "none";
+    video.muted = !active;
+    active ? video.play() : video.pause();
+    document.body.style.overflow = active ? "hidden" : "auto";
+  };
+  
+  overlay.onclick = () => {
+    bubble.classList.remove("active"); overlay.style.display = "none";
+    video.muted = true; video.pause();
+    document.body.style.overflow = "auto";
+  };
+
+  // Meteors (Raven-colored)
+  setInterval(() => {
+    if(Math.random() > 0.6) {
+      const m = document.createElement('div');
+      m.className = 'meteor';
+      m.style.left = Math.random() * 100 + '%';
+      celestial.appendChild(m);
+      m.style.animation = 'meteor-fall 2.5s linear forwards';
+      setTimeout(() => m.remove(), 2500);
+    }
+  }, 3000);
+</script>
+
+</body>
+</html>
